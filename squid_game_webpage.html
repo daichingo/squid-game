@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イカゲームの世界へようこそ - Squid Game Unofficial Fan Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --green-accent: #00a86b; /* イカゲームの緑 */
+            --pink-accent: #ff007f; /* イカゲームのピンク */
+            --dark-gray: #333333;
+            --light-gray: #cccccc;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--dark-gray);
+            border-bottom: 2px solid var(--green-accent);
+        }
+        .navbar-brand, .nav-link {
+            color: var(--text-color) !important;
+            font-weight: bold;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: var(--green-accent) !important;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080/000000/FFFFFF?text=Squid+Game+Hero+Image') no-repeat center center;
+            background-size: cover;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,168,107,0.3) 0%, rgba(26,26,26,0.8) 70%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 4rem;
+            text-shadow: 0 0 15px var(--green-accent), 0 0 25px var(--pink-accent);
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .btn-play {
+            background-color: var(--green-accent);
+            border-color: var(--green-accent);
+            color: #fff;
+            font-weight: bold;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--green-accent);
+        }
+        .btn-play:hover {
+            background-color: var(--pink-accent);
+            border-color: var(--pink-accent);
+            box-shadow: 0 0 20px var(--pink-accent);
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+        section:nth-of-type(even) {
+            background-color: var(--dark-gray);
+        }
+
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--green-accent);
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--green-accent);
+        }
+
+        .card {
+            background-color: var(--dark-gray);
+            border: 1px solid var(--green-accent);
+            box-shadow: 0 0 15px rgba(0, 168, 107, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+        }
+        .card-title {
+            color: var(--pink-accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .card-text {
+            color: var(--light-gray);
+        }
+        .card-img-top {
+            border-bottom: 1px solid var(--green-accent);
+        }
+
+        .game-item {
+            background-color: var(--dark-gray);
+            border: 1px solid var(--pink-accent);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+            transition: all 0.3s ease;
+        }
+        .game-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 168, 107, 0.5);
+        }
+        .game-item h3 {
+            color: var(--green-accent);
+            font-family: 'Press Start 2P', cursive;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .game-item p {
+            color: var(--light-gray);
+        }
+
+        .character-card {
+            background-color: var(--dark-gray);
+            border: 1px solid var(--green-accent);
+            box-shadow: 0 0 10px rgba(0, 168, 107, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+        .character-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--pink-accent);
+            margin-bottom: 15px;
+        }
+        .character-card h4 {
+            color: var(--green-accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .character-card p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border: 2px solid var(--pink-accent);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--light-gray);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid var(--green-accent);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .game-item h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">SQUID GAME</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">イカゲームとは</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#games">ゲーム一覧</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#characters">登場人物</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#trailer">予告編</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>SQUID GAME</h1>
+            <p>絶望の淵に立つ456人の参加者たち。彼らが挑むのは、命をかけた子供の遊び。巨額の賞金か、それとも死か。</p>
+            <a href="#about" class="btn btn-play">ゲーム開始</a>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <h2>イカゲームとは</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h5 class="card-title">あらすじ</h5>
+                        <p class="card-text">多額の借金を抱え、人生に行き詰まった人々が、高額な賞金を懸けて命がけのデスゲームに挑む韓国のサバイバルスリラードラマ。ギャンブル依存症の主人公ソン・ギフンは、謎の男からゲームへの招待を受け、幼馴染のチョ・サンウ、脱北者のカン・セビョクなど、様々な事情を抱えた456人の参加者たちと出会います。ゲームは「だるまさんがころんだ」のような子供の遊びをモチーフにしていますが、脱落すると即座に命を奪われるという過酷なルールが課せられています。参加者たちは一度はゲームの中断を決めますが、現実の過酷さから再びゲームに戻ることを選択し、456億ウォンの賞金を目指して合計6つのゲームに挑みます。一方、行方不明の兄を探す警察官ファン・ジュノは、ゲームの真相を探るべく潜入します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="container">
+        <h2>ゲーム一覧</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>1. だるまさんがころんだ</h3>
+                    <p><strong>ルール:</strong> 鬼が「だるまさんがころんだ」と唱えている間に進み、鬼が振り返った時に動いていると脱落（射殺）となります。制限時間内にゴールラインに到達する必要があります。</p>
+                    <p><strong>意味合い:</strong> 無邪気な子供の遊びが、一瞬の油断が命取りとなる極限の状況へと変貌します。集団心理と個人の恐怖が交錯する最初の試練です。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>2. カルメ焼きの型抜き</h3>
+                    <p><strong>ルール:</strong> 参加者は与えられたカルメ焼きから、指定された形（星、丸、三角、傘など）を針でくり抜きます。制限時間内に成功すればクリア、失敗したりカルメ焼きを割ったりすると脱落となります。</p>
+                    <p><strong>意味合い:</strong> 繊細さと集中力が試されるゲーム。一見単純に見える作業の中に、不公平な条件や運の要素が潜んでおり、社会の不条理を象徴しています。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>3. 綱引き</h3>
+                    <p><strong>ルール:</strong> 10人1組のチームを組み、高所に設置された台の上で綱引きを行います。負けたチームは高所から落下し、脱落となります。</p>
+                    <p><strong>意味合い:</strong> チームワークと戦略が不可欠なゲーム。肉体的な強さだけでなく、知恵や信頼関係が勝敗を分けます。裏切りや犠牲といった人間の本性が露わになります。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>4. ビー玉遊び</h3>
+                    <p><strong>ルール:</strong> 2人1組になり、相手のビー玉を全て奪うゲームです。様々な遊び方（奇数偶数当て、ビー玉を穴に入れるなど）が許容されますが、最終的に相手のビー玉を全て手に入れた方が勝ちとなります。負けた方は脱落です。</p>
+                    <p><strong>意味合い:</strong> 最も残酷なゲームの一つ。信頼していた相手、あるいは大切な人と命を懸けて争わなければならない状況が、人間の倫理観を揺さぶります。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>5. 飛び石渡り</h3>
+                    <p><strong>ルール:</strong> 強化ガラスと普通のガラスでできた橋を渡ります。どちらのガラスが強化ガラスかは見た目では判断できず、間違ったガラスに乗ると割れて落下し、脱落となります。制限時間内に渡り切る必要があります。</p>
+                    <p><strong>意味合い:</strong> 運と洞察力、そして他者の犠牲の上に成り立つゲーム。先頭に立つ者のリスクと、後続の者の利己的な選択が浮き彫りになります。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="game-item">
+                    <h3>6. イカゲーム</h3>
+                    <p><strong>ルール:</strong> 韓国の子供の遊び「イカゲーム」がモチーフ。地面に描かれたイカの形をした陣地を使い、攻撃側と守備側に分かれて戦います。攻撃側は片足で移動し、イカの「腰」をまたいで「暗行御史（アメンオサ）」と叫べば両足で歩けるようになります。最終的にイカの絵の入り口に集合し、決戦を行います。相手を陣地から押し出す、またはイカの絵の入り口を先に踏むことで勝利となります。</p>
+                    <p><strong>意味合い:</strong> 最終決戦にふさわしい、肉体的・精神的な限界が試されるゲーム。子供の頃の純粋な遊びが、生き残りをかけた壮絶な戦いへと昇華されます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="characters" class="container">
+        <h2>登場人物</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/00a86b/FFFFFF?text=Gi-hun" alt="ソン・ギフン">
+                    <h4>ソン・ギフン (456番)</h4>
+                    <p>イ・ジョンジェ演じる主人公。ギャンブル好きで借金まみれのバツイチ男性。人生の一発逆転をかけてゲームに参加します。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/ff007f/FFFFFF?text=Sang-woo" alt="チョ・サンウ">
+                    <h4>チョ・サンウ (218番)</h4>
+                    <p>パク・ヘス演じるギフンの幼馴染。ソウル大学を首席で卒業したエリートですが、横領の罪で追われています。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/00a86b/FFFFFF?text=Sae-byeok" alt="カン・セビョク">
+                    <h4>カン・セビョク (067番)</h4>
+                    <p>チョン・ホヨン演じる脱北者の女性。弟と母親のために大金が必要でゲームに参加します。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/ff007f/FFFFFF?text=Il-nam" alt="オ・イルナム">
+                    <h4>オ・イルナム (001番)</h4>
+                    <p>オ・ヨンス演じる脳腫瘍を患う老人。ゲームの黒幕でもあります。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/00a86b/FFFFFF?text=Jun-ho" alt="ファン・ジュノ">
+                    <h4>ファン・ジュノ</h4>
+                    <p>ウィ・ハジュン演じる警察官。失踪した兄を探すため、ゲームに潜入します。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/ff007f/FFFFFF?text=Deok-su" alt="チャン・ドクス">
+                    <h4>チャン・ドクス (101番)</h4>
+                    <p>ホ・ソンテ演じるカジノの金を奪って逃走中の暴力団員。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/00a86b/FFFFFF?text=Mi-nyeo" alt="ハン・ミニョ">
+                    <h4>ハン・ミニョ (212番)</h4>
+                    <p>キム・ジュリョン演じるずる賢い女性。</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/ff007f/FFFFFF?text=Front+Man" alt="フロントマン">
+                    <h4>フロントマン</h4>
+                    <p>イ・ビョンホン演じるゲームの運営責任者。ジュノの兄でもあります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trailer" class="container">
+        <h2>公式予告編</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/oqxAJKy0ii4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Squid Game Unofficial Fan Page. All rights reserved.</p>
+            <p>本ページはファンが作成した非公式ページです。公式情報とは異なる場合があります。</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
