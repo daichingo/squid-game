@@ -1,0 +1,222 @@
+:root {
+    --main-bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --green-accent: #00a86b; /* イカゲームの緑 */
+    --pink-accent: #ff007f; /* イカゲームのピンク */
+    --dark-gray: #333333;
+    --light-gray: #cccccc;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: var(--dark-gray);
+    border-bottom: 2px solid var(--green-accent);
+}
+.navbar-brand, .nav-link {
+    color: var(--text-color) !important;
+    font-weight: bold;
+}
+.navbar-brand:hover, .nav-link:hover {
+    color: var(--green-accent) !important;
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080/000000/FFFFFF?text=Squid+Game+Hero+Image') no-repeat center center;
+    background-size: cover;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,168,107,0.3) 0%, rgba(26,26,26,0.8) 70%);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+.hero-content h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 4rem;
+    text-shadow: 0 0 15px var(--green-accent), 0 0 25px var(--pink-accent);
+    margin-bottom: 20px;
+}
+.hero-content p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+.btn-play {
+    background-color: var(--green-accent);
+    border-color: var(--green-accent);
+    color: #fff;
+    font-weight: bold;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--green-accent);
+}
+.btn-play:hover {
+    background-color: var(--pink-accent);
+    border-color: var(--pink-accent);
+    box-shadow: 0 0 20px var(--pink-accent);
+    transform: scale(1.05);
+}
+
+section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+}
+section:nth-of-type(even) {
+    background-color: var(--dark-gray);
+}
+
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: var(--green-accent);
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px var(--green-accent);
+}
+
+.card {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--green-accent);
+    box-shadow: 0 0 15px rgba(0, 168, 107, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+}
+.card-title {
+    color: var(--pink-accent);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.card-text {
+    color: var(--light-gray);
+}
+.card-img-top {
+    border-bottom: 1px solid var(--green-accent);
+}
+
+.game-item {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--pink-accent);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+    transition: all 0.3s ease;
+}
+.game-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 168, 107, 0.5);
+}
+.game-item h3 {
+    color: var(--green-accent);
+    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+.game-item p {
+    color: var(--light-gray);
+}
+
+.character-card {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--green-accent);
+    box-shadow: 0 0 10px rgba(0, 168, 107, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+}
+.character-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--pink-accent);
+    margin-bottom: 15px;
+}
+.character-card h4 {
+    color: var(--green-accent);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.character-card p {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border: 2px solid var(--pink-accent);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 2px solid var(--green-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    .game-item h3 {
+        font-size: 1.5rem;
+    }
+}
